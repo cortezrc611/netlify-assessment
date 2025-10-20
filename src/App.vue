@@ -46,18 +46,18 @@ interface FAQ {
 
 const faqs = ref<FAQ[]>([
   {
-    title: "1. Project Overview",
+    title: "1. Talk about how you made your site and why you chose the tools you did. Briefly explain one challenge you experienced in setting up this site and how you overcame it.",
     content: `
       <p>I built this Netlify assessment website using <strong>Vue.js, TypeScript, and CSS</strong>.
       I chose these tools for their efficiency, type safety, and ease of creating responsive designs.</p>
       <p>Instead of using an API, I defined a static product list to focus on layout and functionality.
-      One challenge I faced was ensuring the grid layout remained responsive, which I solved with
+      One challenge I experienced in setting up this site was ensuring the grid layout remained responsive, which I solved with
       <strong>flexbox and media queries</strong>.</p>
     `,
     open: true,
   },
   {
-    title: "2. Netlify Experience",
+    title: "2. What did you think of our service during the time you used it? Provide some constructive criticism or some features that impressed you.",
     content: `
       <p>The deployment process was fast, and the interface intuitive.
       Adding more detailed error logs or clearer feedback could make troubleshooting even easier.</p>
@@ -65,8 +65,9 @@ const faqs = ref<FAQ[]>([
     open: false,
   },
   {
-    title: "3. Favorite Activities",
+    title: "3. Rank your 5 favorite and 5 least favorite activities from this list: https://gist.github.com/laurajodz/592402a6336410377dee1a744af846ab",
     content: `
+      <p><strong>5 favorite activities:</strong></p>
       <ul>
         <li>Setting up site frameworks for debugging</li>
         <li>Collaborating on new features</li>
@@ -74,12 +75,7 @@ const faqs = ref<FAQ[]>([
         <li>Submitting bug reports and fixes</li>
         <li>Helping train and onboard new teammates</li>
       </ul>
-    `,
-    open: false,
-  },
-  {
-    title: "4. Least Favorite Activities",
-    content: `
+      <p><strong>5 least favorite activities:</strong></p>
       <ul>
         <li>Responding to 20+ support emails daily</li>
         <li>Creating video tutorials</li>
@@ -91,15 +87,15 @@ const faqs = ref<FAQ[]>([
     open: false,
   },
   {
-    title: "5. API Documentation Example",
+    title: "4. Provide a link to documentation for a technical/developer-focused product, which you think are well done, and explain why you think they are well done.",
     content: `
-      <p>I think <a href='https://docs.stripe.com/apis' target='_blank'>Stripe’s API documentation</a>
+      <p>I think <a href='https://docs.stripe.com/apis' target='_blank'>Stripe's API documentation</a>
       is exceptionally well done — clear, well-structured, and developer-friendly with interactive examples.</p>
     `,
     open: false,
   },
   {
-    title: "6. DNS Configuration Challenges",
+    title: "5. Explain, in a couple of paragraphs, what you think are two major challenges around DNS configuration for less-technical customers hosting websites.",
     content: `
       <p>Concepts like <strong>A records</strong>, <strong>CNAMEs</strong>, and <strong>nameservers</strong>
       can be confusing. Propagation delays also make troubleshooting difficult, as changes aren't immediate.</p>
@@ -107,30 +103,42 @@ const faqs = ref<FAQ[]>([
     open: false,
   },
   {
-    title: "7. Troubleshooting a Build Error",
+    title: "6. A customer writes in to Support saying simply that their 'site won't build'. You have access to their build logs, and there you see this error: Build failed due to a user error: Build script returned non-zero exit code: 2. You have no more information than this and the site's source repository is private so you cannot test the build yourself. How would you troubleshoot this issue? What steps would you take? Also, please compose your best customer-facing first response.",
     content: `
-      <p>I’d review the build logs before the “exit code: 2” message, check the build command and environment variables,
+      <p>I'd review the build logs before the "exit code: 2" message, check the build command and environment variables,
       and confirm if the project builds locally to narrow down the issue.</p>
+      <p><strong>Customer-facing response:</strong> "Thank you for reaching out about your build issue. I can see from the logs that the build is failing with exit code 2, which typically indicates an issue with the build process. I've reviewed the logs and noticed [specific observations]. Could you please confirm if the project builds successfully locally? Also, would you mind sharing your build command and any recent changes to your project configuration?"</p>
     `,
     open: false,
   },
   {
-    title: "8. Example 301 Redirect",
+    title: "7. How would you set up an http 301 status redirect from '/netlify/anything' on your site, to https://www.google.com/search?q=anything. Please provide the redirect formatting here. Now, how about a proxy redirect? Please add that proxy redirect rule directly to your site!",
     content: `
+      <p><strong>301 Redirect:</strong></p>
       <pre>/netlify/:query  https://www.google.com/search?q=:query  301</pre>
       <p><code>/netlify/:query</code> captures anything after it as a parameter, passed to Google as a search term using a <strong>301</strong> redirect.</p>
+      <p><strong>Proxy Redirect:</strong></p>
+      <pre>/netlify/*  https://www.google.com/search?q=:splat  200</pre>
     `,
     open: false,
   },
   {
-    title: "9. Security Report Handling",
+    title: "8. Please attempt to deploy a function on our service. This need not be complicated. It could be 'Hello World'. Note that failure to deploy is not failing the exercise! Whether you have trouble or not, please describe what you experienced and how you attempted to troubleshoot any issues you encountered.",
     content: `
-      <p>If I received a report about a severe security issue, I’d acknowledge it immediately, thank the reporter,
-      and ensure it’s forwarded to the proper team while keeping communication open and respectful.</p>
+      <p>I attempted to deploy a simple "Hello World" function by creating a Netlify function in the project. The deployment process was straightforward, and I followed the documentation to set up the function structure. I placed the function in the netlify/functions directory and ensured the proper exports. The function deployed successfully without issues.</p>
     `,
     open: false,
   },
-
+  {
+    title: "9. We understand you don't know anything about our internal procedures at this stage, but we want you to explain at a high level how you'd react to this situation: You receive a report of a severe security issue on www.netlify.com. You can't immediately confirm the report, so what steps might you take to investigate or substantiate the report? What might you say to the reporter, even though we haven't confirmed their assertion yet, that will instill confidence that our business is very concerned about security? You believe there is a reasonable chance the report is correct and the problem is very large and impactful. How might you escalate?",
+    content: `
+      <p>If I received a report about a severe security issue, I'd acknowledge it immediately, thank the reporter,
+      and ensure it's forwarded to the proper team while keeping communication open and respectful.</p>
+      <p><strong>Response to reporter:</strong> "Thank you for bringing this serious security concern to our attention. We take all security reports extremely seriously and have immediately escalated this to our security team for thorough investigation. We appreciate your diligence in helping us maintain the security of our platform and will keep you updated on our progress."</p>
+      <p><strong>Escalation steps:</strong> I would immediately notify the security team lead, provide all details from the reporter, and follow the company's security incident response protocol while maintaining clear communication with the reporter throughout the process.</p>
+    `,
+    open: false,
+  },
 ]);
 
 const toggle = (index: number) => {
